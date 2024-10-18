@@ -77,6 +77,14 @@ class Parser:
             while True:
                 rec = self.get_record(f_obj)
                 # TODO: stop the loop
+
+                #checks and see if no more records are found by checking if rec is None
+                if rec is None:
+
+                    # stops the loop if it satisfies the condition above, which means that no more records are found
+                    break
+
+                #outputs the rec if it is found and continues on with the loop
                 yield rec
 
     def _get_record(self, f_obj: io.TextIOWrapper) -> Union[Tuple[str, str], Tuple[str, str, str]]:
@@ -99,6 +107,19 @@ class FastaParser(Parser):
         TODO: returns the next fasta record as a 2-tuple of (header, sequence)
         """
 
+        # read the header line, which should start with '>' and remove white space
+        header = f_obj.readline().strip()
+
+        #checks if header is empty, if it is, the end of the fasta file has been reached
+        if not header:  
+            return None
+        
+        #reads the next line, which should be the sequence, and remove any white space
+        sequence = f_obj.readline().strip()
+
+        # returns the header and the sequence found
+        return header, sequence
+
 
 class FastqParser(Parser):
     """
@@ -108,4 +129,23 @@ class FastqParser(Parser):
         """
         TODO: returns the next fastq record as a 3-tuple of (header, sequence, quality)
         """
+
+        # read the header line, which should start with '@' and remove white space
+        header = f_obj.readline().strip()
+
+        #checks if header is empty, if it is, the end of the fasta file has been reached
+        if not header:  
+            return None
+        
+        # read the next line which contains the sequence and strip any whitespace
+        sequence = f_obj.readline().strip()
+
+        # reads the next line, the '+' separator line 
+        plus_line = f_obj.readline().strip() 
+
+        # reads the line after the separator line, which contains the quality score and removes any white space
+        quality = f_obj.readline().strip()
+
+        # reutrns the header, sequence, and quality line found (no plus_line)
+        return header, sequence, quality
 

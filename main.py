@@ -8,22 +8,30 @@ def main():
     """
     TODO: The main function
     """
-    # Create instance of FastaParser
+    # load in fasta and fastq files
     aparser = FastaParser('data/test.fa')
-    # Create instance of FastqParser
-        
-    # For each record of FastaParser, Transcribe the sequence
-    # and print it to console
-       
-    # For each record of FastqParser, Transcribe the sequence
-    # and print it to console
+    qparser = FastqParser('data/test.fq')    
+    
+    print("\napplying ranscribe function on test.fa:")
+    for header, sequence in aparser:
+        rna_sequence = transcribe(sequence)
+        print(f"{header}: {rna_sequence}")
+   
+    print("\napplying ranscribe function on test.fq:")
+    for header, sequence, quality in qparser:
+        rna_sequence = transcribe(sequence)
+        print(f"{header}: {rna_sequence}, {quality}")
 
 
-    # For each record of FastaParser, Reverse Transcribe the sequence
-    # and print it to console
-       
-    # For each record of FastqParser, Reverse Transcribe the sequence
-    # and print it to console
+    print("\napplying reverse ranscribe function on test.fa:")
+    for header, sequence in aparser:
+        reverse_rna_sequence = reverse_transcribe(sequence)
+        print(f"{header}: {reverse_rna_sequence}")
+
+    print("\napplying reverse ranscribe function on test.fq:")
+    for header, sequence, quality in qparser:
+        reverse_rna_sequence = reverse_transcribe(sequence)
+        print(f"{header}: {reverse_rna_sequence}, {quality}")
 
 
 """
