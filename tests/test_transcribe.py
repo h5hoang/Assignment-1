@@ -39,6 +39,8 @@ def test_transcribe():
     # test blank strings
     assert transcribe("") == ""  
 
+    # test lower case dna inputs
+    assert transcribe("aagtc") == "TTCAG"
 
     # TESTING FOR INVALID INPUT
     # test if my transcribe function raises an error when there is an invalid nucleotide in the input
@@ -67,6 +69,9 @@ def test_reverse_transcribe():
 
     # test blank strings
     assert reverse_transcribe("") == ""  
+
+    # test lower case dna inputs
+    assert transcribe("aagtc") == "GACUU"
 
     # TESTING FOR INVALID INPUT
     # test if my reverse_transcribe function raises an error (from the transcribe function) when there is an invalid nucleotide in the input
