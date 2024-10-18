@@ -7,16 +7,20 @@ def transcribe(seq: str) -> str:
     the complement sequence with T -> U replacement
     """
 
+    # converts the input sequence into all uppercase letters and removes white 
+    # space to avoid errors with case sensitivity and white space
+    seq = seq.upper().strip()
+
     # initializes empty string to store RNA sequence
     rna = ''
 
-    # initialize dictionary that maps DNA bases to RNA bases
+    # initialize dictionary that maps DNA bases to its complement RNA bases
     dna_to_rna = {'A': 'U', 
                   'T': 'A', 
                   'G': 'C', 
                   'C': 'G'}
 
-    # iterate through each nucleotide in the input sequence
+    # iterates through each nucleotide in the input sequence
     for nuc in seq:
 
         # check to see if the nucleotide in seq is valid and has a match in the dna_to_rna dictionary

@@ -81,7 +81,7 @@ class Parser:
                 #checks and see if no more records are found by checking if rec is None
                 if rec is None:
 
-                    # stops the loop if it satisfies the condition above, which means that no more records are found
+                    # stops the loop if it satisfies the condition above, which means that no more records are found.
                     break
 
                 #outputs the rec if it is found and continues on with the loop
@@ -134,13 +134,15 @@ class FastqParser(Parser):
         header = f_obj.readline().strip()
 
         #checks if header is empty, if it is, the end of the fasta file has been reached
+        #brekas function by return NONE
         if not header:  
             return None
         
         # read the next line which contains the sequence and strip any whitespace
         sequence = f_obj.readline().strip()
 
-        # reads the next line, the '+' separator line 
+        #reads the next line, the '+' separator line 
+        # LINE IS NOT PART OF THE OUTPUT, JUST NEED TO ITERATE THRU IT TO GET TO QUALITY SCORE
         plus_line = f_obj.readline().strip() 
 
         # reads the line after the separator line, which contains the quality score and removes any white space

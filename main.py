@@ -12,22 +12,26 @@ def main():
     aparser = FastaParser('data/test.fa')
     qparser = FastqParser('data/test.fq')    
     
+    # prints header and the sequence for every sequence in test.fa using the transcribe function
     print("\napplying ranscribe function on test.fa:")
     for header, sequence in aparser:
         rna_sequence = transcribe(sequence)
         print(f"{header}: {rna_sequence}")
-   
+
+    # prints header and the sequence for every sequence in test.fq using the transcribe function
     print("\napplying ranscribe function on test.fq:")
     for header, sequence, quality in qparser:
         rna_sequence = transcribe(sequence)
         print(f"{header}: {rna_sequence}, {quality}")
 
 
+    # prints header and the sequence for every sequence in test.fa using the reverse transcribe function
     print("\napplying reverse ranscribe function on test.fa:")
     for header, sequence in aparser:
         reverse_rna_sequence = reverse_transcribe(sequence)
         print(f"{header}: {reverse_rna_sequence}")
 
+    # prints header and the sequence for every sequence in test.fq using the reverse transcribe function
     print("\napplying reverse ranscribe function on test.fq:")
     for header, sequence, quality in qparser:
         reverse_rna_sequence = reverse_transcribe(sequence)

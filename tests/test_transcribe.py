@@ -39,6 +39,8 @@ def test_transcribe():
     # test blank strings
     assert transcribe("") == ""  
 
+
+    # TESTING FOR INVALID INPUT
     # test if my transcribe function raises an error when there is an invalid nucleotide in the input
     try:
         # transcribes random DNA sequence with invalid base (H)
@@ -66,6 +68,7 @@ def test_reverse_transcribe():
     # test blank strings
     assert reverse_transcribe("") == ""  
 
+    # TESTING FOR INVALID INPUT
     # test if my reverse_transcribe function raises an error (from the transcribe function) when there is an invalid nucleotide in the input
     try:
         # reverse_transcribes random DNA sequence with invalid base (H)
