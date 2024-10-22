@@ -145,9 +145,9 @@ class FastqParser(Parser):
         # LINE IS NOT PART OF THE OUTPUT, JUST NEED TO ITERATE THRU IT TO GET TO QUALITY SCORE
         plus_line = f_obj.readline().strip() 
 
-        # reads the line after the separator line, which contains the quality score and removes any white space
+        #reads the line after the separator line, which contains the quality score and removes any white space
         quality = f_obj.readline().strip()
 
-        # reutrns the header, sequence, and quality line found (no plus_line)
+        #reutrns the header, sequence, and quality line found (no plus_line)
         return header, sequence, quality
 
