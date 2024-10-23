@@ -5,7 +5,6 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "CDD203-A1"
 authors = [{name = "Hanson Hoang", email = "hanson.hoang@ucsf.edu"}]
-description = "Repo contains a Fasta parser and a FastQ parser along with a transcribe function to give complementary bases to an inputted DNA strand and a reverse transcribe function that reverses the output of the transcribe function"
 readme = "README.md"
 license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: MIT License"]
